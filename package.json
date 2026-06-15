@@ -64,7 +64,9 @@
     "vaul": "^1.1.2",
     "vite-tsconfig-paths": "^6.0.2",
     "zod": "^3.24.2",
-    "@supabase/supabase-js": "^2.58.0"
+    "@supabase/supabase-js": "^2.58.0",
+    "jszip": "^3.10.1",
+    "file-saver": "^2.0.5"
   },
   "devDependencies": {
     "@eslint/js": "^9.32.0",

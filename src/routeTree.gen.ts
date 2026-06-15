@@ -28,9 +28,13 @@ import { Route as DashboardDevTodosRouteImport } from './routes/dashboard/dev-to
 import { Route as DashboardDevHistoryRouteImport } from './routes/dashboard/dev-history'
 import { Route as DashboardAuditLogsRouteImport } from './routes/dashboard/audit-logs'
 import { Route as DashboardActivityLogsRouteImport } from './routes/dashboard/activity-logs'
+import { Route as DashboardAppTrainingRouteImport } from './routes/dashboard/app/training'
+import { Route as DashboardAppTokensRouteImport } from './routes/dashboard/app/tokens'
 import { Route as DashboardAppTemplatesRouteImport } from './routes/dashboard/app/templates'
 import { Route as DashboardAppSkillsRouteImport } from './routes/dashboard/app/skills'
+import { Route as DashboardAppDeployRouteImport } from './routes/dashboard/app/deploy'
 import { Route as DashboardAppDepartmentsRouteImport } from './routes/dashboard/app/departments'
+import { Route as DashboardAppConnectorRouteImport } from './routes/dashboard/app/connector'
 import { Route as DashboardAppCompanyRouteImport } from './routes/dashboard/app/company'
 
 const LoginRoute = LoginRouteImport.update({
@@ -130,6 +134,16 @@ const DashboardActivityLogsRoute = DashboardActivityLogsRouteImport.update({
   path: '/activity-logs',
   getParentRoute: () => DashboardRoute,
 } as any)
+const DashboardAppTrainingRoute = DashboardAppTrainingRouteImport.update({
+  id: '/app/training',
+  path: '/app/training',
+  getParentRoute: () => DashboardRoute,
+} as any)
+const DashboardAppTokensRoute = DashboardAppTokensRouteImport.update({
+  id: '/app/tokens',
+  path: '/app/tokens',
+  getParentRoute: () => DashboardRoute,
+} as any)
 const DashboardAppTemplatesRoute = DashboardAppTemplatesRouteImport.update({
   id: '/app/templates',
   path: '/app/templates',
@@ -140,9 +154,19 @@ const DashboardAppSkillsRoute = DashboardAppSkillsRouteImport.update({
   path: '/app/skills',
   getParentRoute: () => DashboardRoute,
 } as any)
+const DashboardAppDeployRoute = DashboardAppDeployRouteImport.update({
+  id: '/app/deploy',
+  path: '/app/deploy',
+  getParentRoute: () => DashboardRoute,
+} as any)
 const DashboardAppDepartmentsRoute = DashboardAppDepartmentsRouteImport.update({
   id: '/app/departments',
   path: '/app/departments',
+  getParentRoute: () => DashboardRoute,
+} as any)
+const DashboardAppConnectorRoute = DashboardAppConnectorRouteImport.update({
+  id: '/app/connector',
+  path: '/app/connector',
   getParentRoute: () => DashboardRoute,
 } as any)
 const DashboardAppCompanyRoute = DashboardAppCompanyRouteImport.update({
@@ -172,9 +196,13 @@ export interface FileRoutesByFullPath {
   '/dashboard/users': typeof DashboardUsersRoute
   '/dashboard/': typeof DashboardIndexRoute
   '/dashboard/app/company': typeof DashboardAppCompanyRoute
+  '/dashboard/app/connector': typeof DashboardAppConnectorRoute
   '/dashboard/app/departments': typeof DashboardAppDepartmentsRoute
+  '/dashboard/app/deploy': typeof DashboardAppDeployRoute
   '/dashboard/app/skills': typeof DashboardAppSkillsRoute
   '/dashboard/app/templates': typeof DashboardAppTemplatesRoute
+  '/dashboard/app/tokens': typeof DashboardAppTokensRoute
+  '/dashboard/app/training': typeof DashboardAppTrainingRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -196,9 +224,13 @@ export interface FileRoutesByTo {
   '/dashboard/users': typeof DashboardUsersRoute
   '/dashboard': typeof DashboardIndexRoute
   '/dashboard/app/company': typeof DashboardAppCompanyRoute
+  '/dashboard/app/connector': typeof DashboardAppConnectorRoute
   '/dashboard/app/departments': typeof DashboardAppDepartmentsRoute
+  '/dashboard/app/deploy': typeof DashboardAppDeployRoute
   '/dashboard/app/skills': typeof DashboardAppSkillsRoute
   '/dashboard/app/templates': typeof DashboardAppTemplatesRoute
+  '/dashboard/app/tokens': typeof DashboardAppTokensRoute
+  '/dashboard/app/training': typeof DashboardAppTrainingRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -222,9 +254,13 @@ export interface FileRoutesById {
   '/dashboard/users': typeof DashboardUsersRoute
   '/dashboard/': typeof DashboardIndexRoute
   '/dashboard/app/company': typeof DashboardAppCompanyRoute
+  '/dashboard/app/connector': typeof DashboardAppConnectorRoute
   '/dashboard/app/departments': typeof DashboardAppDepartmentsRoute
+  '/dashboard/app/deploy': typeof DashboardAppDeployRoute
   '/dashboard/app/skills': typeof DashboardAppSkillsRoute
   '/dashboard/app/templates': typeof DashboardAppTemplatesRoute
+  '/dashboard/app/tokens': typeof DashboardAppTokensRoute
+  '/dashboard/app/training': typeof DashboardAppTrainingRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -249,9 +285,13 @@ export interface FileRouteTypes {
     | '/dashboard/users'
     | '/dashboard/'
     | '/dashboard/app/company'
+    | '/dashboard/app/connector'
     | '/dashboard/app/departments'
+    | '/dashboard/app/deploy'
     | '/dashboard/app/skills'
     | '/dashboard/app/templates'
+    | '/dashboard/app/tokens'
+    | '/dashboard/app/training'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -273,9 +313,13 @@ export interface FileRouteTypes {
     | '/dashboard/users'
     | '/dashboard'
     | '/dashboard/app/company'
+    | '/dashboard/app/connector'
     | '/dashboard/app/departments'
+    | '/dashboard/app/deploy'
     | '/dashboard/app/skills'
     | '/dashboard/app/templates'
+    | '/dashboard/app/tokens'
+    | '/dashboard/app/training'
   id:
     | '__root__'
     | '/'
@@ -298,9 +342,13 @@ export interface FileRouteTypes {
     | '/dashboard/users'
     | '/dashboard/'
     | '/dashboard/app/company'
+    | '/dashboard/app/connector'
     | '/dashboard/app/departments'
+    | '/dashboard/app/deploy'
     | '/dashboard/app/skills'
     | '/dashboard/app/templates'
+    | '/dashboard/app/tokens'
+    | '/dashboard/app/training'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -444,6 +492,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof DashboardActivityLogsRouteImport
       parentRoute: typeof DashboardRoute
     }
+    '/dashboard/app/training': {
+      id: '/dashboard/app/training'
+      path: '/app/training'
+      fullPath: '/dashboard/app/training'
+      preLoaderRoute: typeof DashboardAppTrainingRouteImport
+      parentRoute: typeof DashboardRoute
+    }
+    '/dashboard/app/tokens': {
+      id: '/dashboard/app/tokens'
+      path: '/app/tokens'
+      fullPath: '/dashboard/app/tokens'
+      preLoaderRoute: typeof DashboardAppTokensRouteImport
+      parentRoute: typeof DashboardRoute
+    }
     '/dashboard/app/templates': {
       id: '/dashboard/app/templates'
       path: '/app/templates'
@@ -458,11 +520,25 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof DashboardAppSkillsRouteImport
       parentRoute: typeof DashboardRoute
     }
+    '/dashboard/app/deploy': {
+      id: '/dashboard/app/deploy'
+      path: '/app/deploy'
+      fullPath: '/dashboard/app/deploy'
+      preLoaderRoute: typeof DashboardAppDeployRouteImport
+      parentRoute: typeof DashboardRoute
+    }
     '/dashboard/app/departments': {
       id: '/dashboard/app/departments'
       path: '/app/departments'
       fullPath: '/dashboard/app/departments'
       preLoaderRoute: typeof DashboardAppDepartmentsRouteImport
+      parentRoute: typeof DashboardRoute
+    }
+    '/dashboard/app/connector': {
+      id: '/dashboard/app/connector'
+      path: '/app/connector'
+      fullPath: '/dashboard/app/connector'
+      preLoaderRoute: typeof DashboardAppConnectorRouteImport
       parentRoute: typeof DashboardRoute
     }
     '/dashboard/app/company': {
@@ -493,9 +569,13 @@ interface DashboardRouteChildren {
   DashboardUsersRoute: typeof DashboardUsersRoute
   DashboardIndexRoute: typeof DashboardIndexRoute
   DashboardAppCompanyRoute: typeof DashboardAppCompanyRoute
+  DashboardAppConnectorRoute: typeof DashboardAppConnectorRoute
   DashboardAppDepartmentsRoute: typeof DashboardAppDepartmentsRoute
+  DashboardAppDeployRoute: typeof DashboardAppDeployRoute
   DashboardAppSkillsRoute: typeof DashboardAppSkillsRoute
   DashboardAppTemplatesRoute: typeof DashboardAppTemplatesRoute
+  DashboardAppTokensRoute: typeof DashboardAppTokensRoute
+  DashboardAppTrainingRoute: typeof DashboardAppTrainingRoute
 }
 
 const DashboardRouteChildren: DashboardRouteChildren = {
@@ -516,9 +596,13 @@ const DashboardRouteChildren: DashboardRouteChildren = {
   DashboardUsersRoute: DashboardUsersRoute,
   DashboardIndexRoute: DashboardIndexRoute,
   DashboardAppCompanyRoute: DashboardAppCompanyRoute,
+  DashboardAppConnectorRoute: DashboardAppConnectorRoute,
   DashboardAppDepartmentsRoute: DashboardAppDepartmentsRoute,
+  DashboardAppDeployRoute: DashboardAppDeployRoute,
   DashboardAppSkillsRoute: DashboardAppSkillsRoute,
   DashboardAppTemplatesRoute: DashboardAppTemplatesRoute,
+  DashboardAppTokensRoute: DashboardAppTokensRoute,
+  DashboardAppTrainingRoute: DashboardAppTrainingRoute,
 }
 
 const DashboardRouteWithChildren = DashboardRoute._addFileChildren(
