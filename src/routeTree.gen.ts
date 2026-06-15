@@ -28,6 +28,10 @@ import { Route as DashboardDevTodosRouteImport } from './routes/dashboard/dev-to
 import { Route as DashboardDevHistoryRouteImport } from './routes/dashboard/dev-history'
 import { Route as DashboardAuditLogsRouteImport } from './routes/dashboard/audit-logs'
 import { Route as DashboardActivityLogsRouteImport } from './routes/dashboard/activity-logs'
+import { Route as DashboardAppTemplatesRouteImport } from './routes/dashboard/app/templates'
+import { Route as DashboardAppSkillsRouteImport } from './routes/dashboard/app/skills'
+import { Route as DashboardAppDepartmentsRouteImport } from './routes/dashboard/app/departments'
+import { Route as DashboardAppCompanyRouteImport } from './routes/dashboard/app/company'
 
 const LoginRoute = LoginRouteImport.update({
   id: '/login',
@@ -126,6 +130,26 @@ const DashboardActivityLogsRoute = DashboardActivityLogsRouteImport.update({
   path: '/activity-logs',
   getParentRoute: () => DashboardRoute,
 } as any)
+const DashboardAppTemplatesRoute = DashboardAppTemplatesRouteImport.update({
+  id: '/app/templates',
+  path: '/app/templates',
+  getParentRoute: () => DashboardRoute,
+} as any)
+const DashboardAppSkillsRoute = DashboardAppSkillsRouteImport.update({
+  id: '/app/skills',
+  path: '/app/skills',
+  getParentRoute: () => DashboardRoute,
+} as any)
+const DashboardAppDepartmentsRoute = DashboardAppDepartmentsRouteImport.update({
+  id: '/app/departments',
+  path: '/app/departments',
+  getParentRoute: () => DashboardRoute,
+} as any)
+const DashboardAppCompanyRoute = DashboardAppCompanyRouteImport.update({
+  id: '/app/company',
+  path: '/app/company',
+  getParentRoute: () => DashboardRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -147,6 +171,10 @@ export interface FileRoutesByFullPath {
   '/dashboard/user-manual': typeof DashboardUserManualRoute
   '/dashboard/users': typeof DashboardUsersRoute
   '/dashboard/': typeof DashboardIndexRoute
+  '/dashboard/app/company': typeof DashboardAppCompanyRoute
+  '/dashboard/app/departments': typeof DashboardAppDepartmentsRoute
+  '/dashboard/app/skills': typeof DashboardAppSkillsRoute
+  '/dashboard/app/templates': typeof DashboardAppTemplatesRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -167,6 +195,10 @@ export interface FileRoutesByTo {
   '/dashboard/user-manual': typeof DashboardUserManualRoute
   '/dashboard/users': typeof DashboardUsersRoute
   '/dashboard': typeof DashboardIndexRoute
+  '/dashboard/app/company': typeof DashboardAppCompanyRoute
+  '/dashboard/app/departments': typeof DashboardAppDepartmentsRoute
+  '/dashboard/app/skills': typeof DashboardAppSkillsRoute
+  '/dashboard/app/templates': typeof DashboardAppTemplatesRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -189,6 +221,10 @@ export interface FileRoutesById {
   '/dashboard/user-manual': typeof DashboardUserManualRoute
   '/dashboard/users': typeof DashboardUsersRoute
   '/dashboard/': typeof DashboardIndexRoute
+  '/dashboard/app/company': typeof DashboardAppCompanyRoute
+  '/dashboard/app/departments': typeof DashboardAppDepartmentsRoute
+  '/dashboard/app/skills': typeof DashboardAppSkillsRoute
+  '/dashboard/app/templates': typeof DashboardAppTemplatesRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -212,6 +248,10 @@ export interface FileRouteTypes {
     | '/dashboard/user-manual'
     | '/dashboard/users'
     | '/dashboard/'
+    | '/dashboard/app/company'
+    | '/dashboard/app/departments'
+    | '/dashboard/app/skills'
+    | '/dashboard/app/templates'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -232,6 +272,10 @@ export interface FileRouteTypes {
     | '/dashboard/user-manual'
     | '/dashboard/users'
     | '/dashboard'
+    | '/dashboard/app/company'
+    | '/dashboard/app/departments'
+    | '/dashboard/app/skills'
+    | '/dashboard/app/templates'
   id:
     | '__root__'
     | '/'
@@ -253,6 +297,10 @@ export interface FileRouteTypes {
     | '/dashboard/user-manual'
     | '/dashboard/users'
     | '/dashboard/'
+    | '/dashboard/app/company'
+    | '/dashboard/app/departments'
+    | '/dashboard/app/skills'
+    | '/dashboard/app/templates'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -396,6 +444,34 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof DashboardActivityLogsRouteImport
       parentRoute: typeof DashboardRoute
     }
+    '/dashboard/app/templates': {
+      id: '/dashboard/app/templates'
+      path: '/app/templates'
+      fullPath: '/dashboard/app/templates'
+      preLoaderRoute: typeof DashboardAppTemplatesRouteImport
+      parentRoute: typeof DashboardRoute
+    }
+    '/dashboard/app/skills': {
+      id: '/dashboard/app/skills'
+      path: '/app/skills'
+      fullPath: '/dashboard/app/skills'
+      preLoaderRoute: typeof DashboardAppSkillsRouteImport
+      parentRoute: typeof DashboardRoute
+    }
+    '/dashboard/app/departments': {
+      id: '/dashboard/app/departments'
+      path: '/app/departments'
+      fullPath: '/dashboard/app/departments'
+      preLoaderRoute: typeof DashboardAppDepartmentsRouteImport
+      parentRoute: typeof DashboardRoute
+    }
+    '/dashboard/app/company': {
+      id: '/dashboard/app/company'
+      path: '/app/company'
+      fullPath: '/dashboard/app/company'
+      preLoaderRoute: typeof DashboardAppCompanyRouteImport
+      parentRoute: typeof DashboardRoute
+    }
   }
 }
 
@@ -416,6 +492,10 @@ interface DashboardRouteChildren {
   DashboardUserManualRoute: typeof DashboardUserManualRoute
   DashboardUsersRoute: typeof DashboardUsersRoute
   DashboardIndexRoute: typeof DashboardIndexRoute
+  DashboardAppCompanyRoute: typeof DashboardAppCompanyRoute
+  DashboardAppDepartmentsRoute: typeof DashboardAppDepartmentsRoute
+  DashboardAppSkillsRoute: typeof DashboardAppSkillsRoute
+  DashboardAppTemplatesRoute: typeof DashboardAppTemplatesRoute
 }
 
 const DashboardRouteChildren: DashboardRouteChildren = {
@@ -435,6 +515,10 @@ const DashboardRouteChildren: DashboardRouteChildren = {
   DashboardUserManualRoute: DashboardUserManualRoute,
   DashboardUsersRoute: DashboardUsersRoute,
   DashboardIndexRoute: DashboardIndexRoute,
+  DashboardAppCompanyRoute: DashboardAppCompanyRoute,
+  DashboardAppDepartmentsRoute: DashboardAppDepartmentsRoute,
+  DashboardAppSkillsRoute: DashboardAppSkillsRoute,
+  DashboardAppTemplatesRoute: DashboardAppTemplatesRoute,
 }
 
 const DashboardRouteWithChildren = DashboardRoute._addFileChildren(
